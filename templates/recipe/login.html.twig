@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Connexion"%}
+
+
+{% block body %}
+{% set number = recipes|length %}
+
+    
+<section>
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 wh-100">
+    <div class="row align-items-center mb-1">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <h1 class="my-5 display-5">
+        {{ "login.title" | trans}} <br />
+          <span>{{ "login.subtitle" | trans}}</a></span>
+        </h1>
+        <p class="mb-4">
+        {{ "login.slogan" | trans({'%number%': number}) }}
+        </p>
+      </div>
+
+<div class="col-lg-6 mb-lg-0">
+    <div class="card">
+<div class="card-body">
+       <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    {% endif %}
+                </div>
+    <div class="row">
+        <h1 class="text-center pb-5 mt-4 display-5 text-uppercase">{{ "login.connection" | trans}}</h1>
+    </div>
+    <div class="form-outline mb-4">
+        <input type="email" name="_username" id="username" class="form-control" autocomplete="email" required autofocus placeholder="{{ 'home.email' | trans }}">
+    </div>
+    <div class="form-outline mb-4">
+        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required placeholder="{{ 'home.password' | trans }}">
+    </div>
+        <div class="form-outline mb-4">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </div>
+
+    <div class="form-check d-flex justify-content-center mb-4">
+        <button class="btn btn-lg btn-primary submit-button" type="submit">{{ "login.log" | trans}}</button>
+    </div>
+
+    <a href="{{ path('app_forgot_password_request') }}" class="d-flex justify-content-center ms-3 ">{{ "login.forgot" | trans}}</a>
+    <a href="{{ path('home') }}#inscription" class="d-flex justify-content-center ms-3 mb-3">{{ "login.notsignup" | trans}}</a>
+            </form>
+</div>
+
+    </div>
+</div>
+    </div>
+  </div>
+</section>
+{% endblock %}

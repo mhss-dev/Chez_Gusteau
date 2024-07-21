@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Mise à jour d'une recette"%}
+
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-lg">
+            		{% set path = vich_uploader_asset(recipe, 'imageFile') %}
+					<img src="{{ path ? path : asset('images/recipes/default.png') }}" class="card-img-top rounded-top">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">{{ recipe.title | title }}</h1>
+                    <div class="text-center mb-3">
+                        <span class="badge bg-primary">{{ 'recipes.preparation' | trans }} {{ recipe.duration }} minutes</span>
+                    </div>
+                    <hr>
+                    <p class="card-text">{{ recipe.content | nl2br }}</p>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-muted">
+                            <p class="mb-0"><small>{{ 'recipes.added_by' | trans }} {{ recipe.user.firstname }}</small></p>
+                            <p class="mb-0"><small>{{ 'recipes.added_at' | trans }} {{ recipe.createdAt|ago(locale=app.request.locale) }}</small></p>
+                            <p class="mb-0"><small>{{ 'recipes.last_updated' | trans }} {{ recipe.updatedAt|ago(locale=app.request.locale) }}</small></p>
+                        </div>
+                        <div>
+                            {% if app.user and app.user.isVerified and recipe.user.email is same as(app.user.email) %}
+                                <a href="{{ path('app_recipe_edit', {id: recipe.id}) }}" class="btn btn-outline-primary me-2">{{ 'recipes.modify' | trans }}</a>
+                                <a href="{{ path('app_recipe_delete', {id: recipe.id}) }}" class="btn btn-outline-danger" onclick="return confirm('{{ 'recipes.confirm_delete' | trans }}')">{{ 'recipes.delete' | trans }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center mb-3">
+                            <a href="{{ path('app_recipe_index') }}" class="btn btn-outline-success me-2">{{ 'recipes.back_to_recipes' | trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

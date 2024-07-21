@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<h1 class="display-4">404</h1>
+				<p class="lead">{{ 'error_notfound.message' | trans }}</p>
+				<a href="{{ path('home') }}" class="btn btn-primary">{{ 'error_notfound.back_to_home' | trans }}</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

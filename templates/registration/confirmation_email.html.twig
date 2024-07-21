@@ -1,0 +1,14 @@
+
+<h1>Hi! {{ 'home.verifyemail' | trans }}</h1>
+
+<p>
+    {{ 'home.verifyemail' | trans }} <br><br>
+    <a href="{{ signedUrl|raw }}">{{ 'email.confirm_link' | trans }}</a>.
+    {{ 'email.expires_in' | trans({
+        '%expiresAt%' : expiresAtMessageData,
+    }, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    {{ 'home.cheers' | trans }}
+</p>

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Liste des recettes"%}
+
+{% block body %}
+	{% set nombre = recipes|length %}
+
+
+	<h1 class="text-center mt-5 pb-5">{{ 'recipes.title' | trans }}</h1>
+	<div class="container d-flex justify-content-center">
+		<div class="row"></span>
+		<div class="col-12">
+
+			{% if recipes|length > 0%}
+				<label class="mr-2" for="sort">{{'recipes.sort' | trans }}</label>
+				<select name="sort" id="sort" class="form-control form-control-sm mr-2 mb-3" style="width: auto;" onchange="sortRecipes()">
+					<option value="default" {% if app.request.query.get('sort') == 'default' %} selected {% endif %}>{{ 'recipes.default' | trans }}</option>
+					<option value="alphabetical" {% if app.request.query.get('sort') == 'alphabetical' %} selected {% endif %}>{{ 'recipes.alphabetical' | trans }}</option>
+					<option value="duration" {% if app.request.query.get('sort') == 'duration' %} selected {% endif %}>{{ 'recipes.duration' | trans }}</option>
+					<option value="last_updated" {% if app.request.query.get('sort') == 'last_updated' %} selected {% endif %}>{{ 'recipes.lastupdated' | trans }}</option>
+				</select>
+			</form>
+			{% else %}
+		{% endif %}
+	</div>
+	{% if recipes|length > 0 %}
+		{% for recipe in recipes %}
+			<div class="col-md-4 pt-2 pb-5">
+				<div class="card">
+					{% set path = vich_uploader_asset(recipe, 'imageFile') %}
+					<img src="{{ path ? path : asset('images/recipes/default.png') }}" class="card-img-top">
+					<div class="card-body text-center">
+						<h5 class="card-title">{{ recipe.title }}</h5>
+						<small class="text-muted d-block mb-2">
+							<i class="fas fa-clock"></i>
+							{{ recipe.duration }}
+							minutes
+						</small>
+						<div class="d-flex justify-content-center align-items-center">
+							<div class="ml-2">
+								<p class="mb-0 font-weight-bold recipe-content">{{ recipe.content | u.truncate(100, ' [...]', true) }}</p>
+								<small class="text-muted">{{ 'recipes.lastupdated' | trans }}
+									{{ recipe.updatedAt|ago(locale=app.request.locale) }}</small>
+								<br>
+								<a href="{{ path('app_recipe_show', {id: recipe.id, slug: recipe.slug}) }}" class="btn btn-primary mt-3">{{ 'recipes.more' | trans }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>{{ 'recipes.norecipes' | trans }}</p>
+	{% endif %}
+
+</div></div><script>
+function sortRecipes() {
+const sortValue = document.getElementById('sort').value;
+window.location.href = `{{ path('app_recipe_index') }}?sort=${sortValue}`;
+}</script>{% endblock %}

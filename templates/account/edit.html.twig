@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ 'account.title'|trans }}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6 mx-auto text-center">
+        <h1 class="text-center my-5">{{ 'accountEdit.updateProfile'|trans }}</h1>
+        {# {{ form_errors(monForm) }} #}
+        {{ form_start(monForm) }}
+        {{ form_row(monForm.firstname) }}
+        {{ form_row(monForm.lastname) }}
+        {{ form_row(monForm.imageFile) }}
+        <br><p> 
+            <button type="submit" class="btn btn-primary">{{ 'accountEdit.applyChanges'|trans }} </button>
+        </p>
+        {# {{ form_widget(monForm.email, {'attr': {'type': 'hidden'}}) }}
+        {{ form_widget(monForm.agreeTerms, {'attr': {'type': 'hidden'}}) }}
+        {{ form_widget(monForm.plainPassword, {'attr': {'type': 'hidden'}}) }} #}
+        {{ form_end(monForm) }}   
+    </div>
+</div>
+{% endblock %}

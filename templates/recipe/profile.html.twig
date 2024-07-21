@@ -1,0 +1,133 @@
+{# templates/profile/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="card mb-4 shadow-sm text-center">
+
+					<div class="card-header text-center pb-4">
+						<img src="{{ vich_uploader_asset(app.user, 'imageFile') ? vich_uploader_asset(app.user, 'imageFile') : asset('images/default.jpg') }}" class="rounded-circle mb-3 w-25">
+						<h3 class="card-title">{{ user.firstname }}{{ user.lastname }}</h3>
+						<p class="card-text text-muted">{{ user.email }}</p>
+						<label class="form-label mt-3" for="avatar">
+							<i class='fas fa-upload'></i>
+						</label>
+					</label>
+
+					<input type="file" class="btn btn-primary form-control d-none" id="avatar" name="avatar" onchange="document.getElementById('uploadForm').submit();"/>
+
+					<button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#changePasswordModal">{{ 'account.modify_password' | trans}}</button>
+					<a class="btn btn-outline-secondary" href="{{ path('app_account_edit')}}">{{ 'account.edit' | trans}}</a>
+					<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+						{{ 'account.delete' | trans }}
+					</button>
+				</div>
+
+				<div class="row justify-content-center mt-5">
+					<div class="col-lg-8">
+						<div class="row g-3">
+							<h3 class="text-uppercase mt-3">{{ 'account.recipes_title' | trans }}</h3>
+							{% for recipe in recipes %}
+								<div class="col-md-6">
+									<div class="card shadow-sm">
+										<img src="{{ recipe.imageName }}" class="card-img-top" alt="{{ recipe.title }}">
+										<div class="card-body">
+											<h5 class="card-title">{{ recipe.title }}</h5>
+											<p class="card-text">{{ recipe.content|slice(0, 100) ~ '...' }}</p>
+											<a href="{{ path('app_recipe_show', {'id': recipe.id, 'slug': recipe.slug}) }}" class="btn btn-primary w-100">{{ 'account.recipe_link' | trans }}</a>
+										</div>
+									</div>
+								</div>
+							{% else %}
+								<p class="text-center mt-5">{{ 'account.recipenone' | trans }}</p>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+	<div class="modal-dialog text-center">
+		<div class="modal-content ">
+			<div class="modal-header text-center">
+				<h5 class="modal-title" id="deleteAccountModalLabel">{{ 'account.delete_title' | trans }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				{{ 'account.delete_content' | trans }}
+			</div>
+			<div class="modal-footer">
+				<form method="post" action="{{ path('app_recipe_account_delete') }}">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
+					<button type="submit" class="btn btn-danger">{{ 'account.delete_confirm' | trans }}</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="changePasswordModal" aria-labelledby="ChangePasswordModalLabel" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog text-center">
+		<div class="modal-content ">
+			<div class="modal-header text-center">
+				<h5 class="modal-title" id="ChangePasswordModalLabel">{{ 'account.modify_title' | trans }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				<form method="post" action="{{ path('app_recipe_changepassword') }}">
+					<div class="mb-3">
+						<label for="currentPassword" class="form-label">{{ 'account.modify_current' | trans }}</label>
+						<input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+					</div>
+					<div class="mb-3">
+						<label for="newPassword" class="form-label">{{ 'account.modify_newpassword' | trans }}</label>
+						<input type="password" class="form-control" id="newPassword" name="newPassword" required>
+					</div>
+					<div class="mb-3">
+						<label for="confirmPassword" class="form-label">{{ 'account.modify_again' | trans }}</label>
+						<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+					</div>
+					<input type="hidden" name="_token" value="{{ csrf_token('changepassword') }}">
+					<button type="submit" class="btn btn-primary">{{ 'account.modify_confirm' | trans }}</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="changeAccount" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog text-center">
+		<div class="modal-content ">
+			<div class="modal-header text-center">
+				<h5 class="modal-title" id="changeAccountModalLabel">{{ 'account.modify_title' | trans }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				<form method="post" action="{{ path('app_recipe_changepassword') }}">
+					<div class="mb-3">
+						<label for="currentPassword" class="form-label">{{ 'account.modify_current' | trans }}</label>
+						<input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+					</div>
+					<div class="mb-3">
+						<label for="newPassword" class="form-label">{{ 'account.modify_newpassword' | trans }}</label>
+						<input type="password" class="form-control" id="newPassword" name="newPassword" required>
+					</div>
+					<div class="mb-3">
+						<label for="confirmPassword" class="form-label">{{ 'account.modify_again' | trans }}</label>
+						<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+					</div>
+					<input type="hidden" name="_token" value="{{ csrf_token('changepassword') }}">
+					<button type="submit" class="btn btn-primary">{{ 'account.modify_confirm' | trans }}</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

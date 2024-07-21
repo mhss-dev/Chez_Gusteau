@@ -1,0 +1,108 @@
+recipeForm.header: "Création d'une nouvelle recette"
+recipeForm.title: Titre
+recipeForm.content: Description
+recipeForm.duration: 'Durée en minutes'
+recipeForm.imageName: "Lien de l'image"
+recipeForm.save: Sauvegarder
+navbar.home: Accueil
+navbar.recipes: 'Liste des recettes'
+navbar.addrecipe: 'Ajouter une recette'
+navbar.signin: Connexion
+navbar.signup: "S'inscrire"
+navbar.language: "Langue"
+navbar.account: Compte
+navbar.logout: Déconnexion
+home.header: "Chez Gusteau est votre source ultime de recettes délicieuses et faciles à préparer. Explorez une variété de plats savoureux, des hors-d'œuvre aux desserts, avec des instructions claires et des conseils de chef pour améliorer vos repas de tous les jours. Cuisinez, partagez et savourez !"
+home.search: 'Recherchez une recette...'
+home.review_1: "Ce site de recettes est absolument fantastique ! Les instructions sont claires et faciles à suivre, même pour un débutant comme moi. J'ai essayé la recette du poulet au curry, et c'était délicieux ! Les photos étape par étape m'ont vraiment aidé à réussir du premier coup. Merci beaucoup !"
+home.review_2: "Je suis une grande fan de pâtisserie et ce site est une véritable mine d'or. Les recettes de gâteaux et de desserts sont incroyables. J'ai fait le cheesecake au citron la semaine dernière et tout le monde l'a adoré. Les proportions et le temps de cuisson étaient parfaits. Continuez à faire du bon travail !"
+home.review_3: "Le site est bien conçu et il est facile d'y naviguer, mais j'ai eu quelques problèmes avec les mesures de certaines recettes. Par exemple, la recette de la pizza à l'ananas était un peu trop salée à mon goût. Les quantités de certains ingrédients pourraient peut-être être ajustées. Merci pour votre travail efficace !"
+home.joinus: 'Rejoignez-nous !'
+home.subtitle: "Inscrivez-vous pour accéder à plus de %number% délicieuses recettes, enregistrez vos préférées et partagez vos créations avec une communauté de cuisiniers passionnés et ne manquez jamais une nouvelle recette. Explorez, goûtez ! Que vous soyez un chef chevronné ou un amateur à la recherche de nouvelles idées, notre communauté est là pour vous inspirer. Tout le monde peut cuisiner !"
+home.firstname: Prénom
+home.lastname: 'Nom de famille'
+home.email: 'Adresse email'
+home.password: 'Mot de passe'
+home.signup: "S'inscrire"
+home.terms: "En s'inscrivant, vous acceptez nos %link_start%conditions d'utilisations%link_end%"
+home.agree: "J'accepte les conditions d'utilisations"
+home.submit: "S'inscrire"
+home.welcome: 'Bienvenue, %firstname%! '
+home.verifyemail: 'Veuillez vérifier votre email pour continuer.'
+email.confirm_content: 'Veuillez confirmer votre adresse email'
+home.cheers: 'Chez Gusteau'
+email.confirm_link: 'Confirmer mon Email'
+email.expires_in: 'Ce lien expirera dans %expiresAt%.'
+
+account.modify_password: 'Modifier votre mot de passe'
+account.edit: "Mettre à jour vos coordonées"
+account.avatar: 'Mettre une photo de profil'
+account.delete: 'Supprimer le compte'
+account.recipes_title: 'Vos recettes'
+account.recipes_link: 'Voir la recette'
+recipes.title: 'Liste des recettes'
+recipes.sort: 'Trier par'
+recipes.more: 'En savoir plus'
+recipes.lastupdated: 'Dernière mise à jour'
+recipes.default: Défaut
+recipes.alphabetical: Alphabétiquement
+recipes.duration: 'Durée de la recette'
+recipes.norecipes: 'Aucune recette disponible, réessayez plus tard !'
+recipes.created_successfully: 'La recette {{ title }} a été ajoutée avec succès.'
+recipes.edited_successfully: 'La recette {{ title }} a été modifiée avec succès.'
+recipes.deleted_successfully: 'La recette {{ title }} a bien été supprimée.'
+recipes.last_added_title: 'Découvrez nos dernières recettes'
+no_recipes: 'Aucune recettes trouvées'
+
+
+recipes.preparation: "Préparation : "
+recipes.added_by: "Recette écrite par : "
+recipes.added_at: "Recette ajoutée : "
+recipes.modify: "Modifier"
+recipes.delete: "Supprimer"
+recipes.confirm_delete: "Êtes-vous sûre ? cette action est irréversible."
+recipes.back_to_recipes: "Retour aux recettes"
+recipes.last_updated: 'Dernière mise à jour : '
+recipes.modify_title: "Modification de votre recette"
+
+
+
+user:
+  not_verified: "Votre email n'est pas encore vérifié."
+  must_confirm_email_edit: 'Vous devez confirmer votre email pour modifier une recette.'
+  must_confirm_email_create: 'Vous devez confirmer votre email pour créer une recette.'
+  must_login_edit: 'Vous devez vous connecter pour modifier une recette!'
+  must_login_create: 'Vous devez vous connecter pour créer une recette!'
+  current_password_incorrect: 'Le mot de passe actuel est incorrect'
+  password_changed_successfully: 'Mot de passe changé avec succès'
+  cannot_modify_recipe: "Vous ne pouvez pas modifier une recette qui n'est pas la vôtre!"
+  cannot_delete_recipe: "Vous ne pouvez pas supprimer une recette qui n'est pas la vôtre!"
+
+search.notfound: 'Aucun résultat avec votre recherche'
+search.tryagain: 'Essayez une nouvelle recherche'
+search.placeholder: 'Rechercher une recette'
+search.resultsfound: 'Résultat pour votre recherche'
+footer.home: Accueil
+footer.recipes: 'Liste des recettes'
+footer.addrecipe: 'Ajouter une recette'
+footer.signin: Connexion
+footer.signup: "S'inscrire"
+footer.account: Compte
+footer.logout: Déconnexion
+login:
+  title: "Utilisez vos identifiants"
+  subtitle: "pour nous rejoindre !"
+  slogan: "Découvrez plus de %number% de recettes délicieuses, partagées par des passionnés de cuisine du monde entier. Que vous soyez un chef chevronné ou un amateur à la recherche de nouvelles idées, notre communauté est là pour vous inspirer. Explorez une variété de plats, des plus traditionnels aux créations les plus innovantes, et faites de chaque repas une expérience mémorable."
+  connection: "Connexion"
+  log: "Se connecter"
+  forgot: "Mot de passe oublié?"
+  notsignup: "Pas encore inscrit?"
+  alreadyconneced: "Vous êtes déjà connecté"
+
+
+account.recipe_link: "Voir la recette"
+account.recipenone: "Vous possédez aucune recette"
+
+error_notfound:
+  content: "Oups! La page que vous recherchez n'existe pas."
+  back_to_home: "Retour à l'accueil"

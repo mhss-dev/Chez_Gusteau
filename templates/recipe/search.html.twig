@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% set nombre = query|length %}
+
+    <div class="container d-flex justify-content-center mt-5 p-5">
+        <div class="row">
+            {% if recipes is empty %}
+                <h1 class="text-center mt-5 pb-5">{{ "search.notfound" | trans}} "{{ query }}"</h1>
+                <h2 class="text-center mt-5 pb-5">{{ "search.tryagain" | trans}}</h2>
+
+                       <form action="{{ path('app_recipe_search') }}" method="get" class="">
+        <div class="input-group rounded gap-2">
+            <input type="search" name="q" class="form-control rounded gap-5" placeholder="{{ "search.placeholder" | trans}}"/>
+            <button type="submit" class="input-group-text border-0">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
+            {% else %}
+                <h1 class="text-center mt-5 pb-5">{{ "search.resultsfound" | trans}} "{{ query }}" 🔍</h1>
+                {% for recipe in recipes %}
+                    <div class="col-md-4 pt-2 pb-5">
+                        <div class="card">
+                            <img src="{{ recipe.imageName }}" class="card-img-top" alt="{{ recipe.title }}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ recipe.title }}</h5>
+                                <small class="text-muted d-block mb-2"><i class="fas fa-clock"></i> {{ recipe.duration }} minutes</small>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="ml-2">
+                                        <p class="mb-0 font-weight-bold">{{ recipe.content | u.truncate(100,' [...]',true)}}</p>
+                                        <small class="text-muted">{{ "recipes.lastupdated" | trans}}{{ recipe.updatedAt|ago(locale=app.request.locale) }}</small>
+                                        <br>
+                                        <a href="{{ path('app_recipe_show', {id: recipe.id, slug: recipe.slug}) }}" class="btn btn-primary mt-3">{{ "recipes.more" | trans}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

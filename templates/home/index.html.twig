@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{# {% block title %}Liste des Recettes{% endblock %} #}
+{% block title "Accueil" %}
+
+{% set number = recipes|length %}
+
+{% block body %}
+	<div class="container-fluid px-4 py-5 text-center bg-body-secondary">
+		<img class="d-block mx-auto mb-4 w-25" src="https://i.pinimg.com/originals/20/d3/97/20d39708287cd512ee6eed32b22c8fbb.png" alt="">
+		<div class="col-lg-6 mx-auto">
+			<p class="lead mb-4">{{ 'home.header' | trans }}</p>
+			<div class="d-sm-flex justify-content-sm-center m-5">
+				<form action="{{ path('app_recipe_search') }}" method="get" class="w-100">
+					<div class="input-group rounded gap-2">
+						<input type="search" name="q" class="form-control rounded" placeholder="{{ 'home.search' | trans }}"/>
+						<button type="submit" class="input-group-text border-0">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container py-5 px-4">
+		<div class="row text-center ">
+			<div class="col-lg-4">
+				<img src="{{asset('assets/images/user1.png')}}" class="rounded-circle" width="140" height="140">
+				<h2 class="fw-normal mt-3">Hugo</h2>
+				<p>{{ 'home.review_1' | trans }}</p>
+				<smal class="text-warning">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</small>
+			</div>
+			<div class="col-lg-4">
+				<img src="/assets/images/user2.png" class="rounded-circle" width="140" height="140">
+				<h2 class="fw-normal mt-3">Marco</h2>
+				<p>{{ 'home.review_2' | trans }}</p>
+				<smal class="text-warning">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</small>
+			</div>
+			<div class="col-lg-4">
+				<img src="/assets/images/user3.png" class="rounded-circle" width="140" height="140">
+				<h2 class="fw-normal mt-3">Sophie</h2>
+				<p>{{ 'home.review_3' | trans }}</p>
+				<smal class="text-warning">
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="carousel slide container mt-5" data-bs-ride="carousel">
+		<h1 class="text-center pt-3 pb-5">{{ 'recipes.last_added_title' | trans }}</h1>
+		<div class="carousel-inner" data-bs-interval="2000">
+			{% for recipe in recipes %}
+				{% if loop.index % 2 == 1 %}
+					{% set activeClass = loop.index == 1 ? 'active' : '' %}
+					<div class="carousel-item {{ activeClass }}">
+						<div class="row justify-content-center">
+						{% endif %}
+						<div class="col-md-5 mb-4">
+							<div class="card text-center">
+								{% set path = vich_uploader_asset(recipe, 'imageFile') %}
+								<img src="{{ path ? path : asset('images/recipes/default.png') }}" class="card-img-top">
+								<div class="card-body">
+									<h5 class="card-title">
+										<a href="{{ path('app_recipe_show', {id : recipe.id, slug : recipe.slug}) }}">{{ recipe.title }}</a>
+									</h5>
+									<small class="text-muted">{{ 'recipes.added_by' | trans }}
+										:
+										{{ recipe.user.firstname }}</small>
+								</div>
+							</div>
+						</div>
+						{% if loop.index % 2 == 0 or loop.last %}
+						</div>
+					</div>
+				{% endif %}
+			{% else %}
+				<p class="text-center">{{ "recipes.not_recipes" | trans }}</p>
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{% if app.user %}
+	</div>
+{% else %}
+	<hr>
+
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+		<div class="row align-items-center g-lg-5 py-5">
+			<div class="col-lg-7 text-center text-lg-start">
+				<h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">{{ 'home.joinus' | trans }}</h1>
+				<p class="col-lg-10 fs-4">{{ 'home.subtitle' | trans({'%number%': number}) }}</p>
+			</div>
+			<div class="col-md-10 mx-auto col-lg-5">
+				<div class="p-4 p-md-5 border rounded-3 bg-body-tertiary" id="inscription">
+					{{ form_start(registrationForm) }}
+					<div class="form-floating mb-3">
+						{{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'John'}}) }}
+						{{ form_label(registrationForm.firstname, 'home.firstname' | trans) }}
+
+					</div>
+					<div class="form-floating mb-3">
+						{{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Doe'}}) }}
+						{{ form_label(registrationForm.lastname, 'home.lastname' | trans) }}
+					</div>
+					<div class="form-floating mb-3">
+						{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'name@example.com'}}) }}
+						{{ form_label(registrationForm.email,  'home.email' | trans) }}
+					</div>
+					<div class="form-floating mb-3">
+						{{ form_widget(registrationForm.password, {'attr': {'class': 'form-control', 'placeholder': 'Password'}}) }}
+						{{ form_label(registrationForm.password, 'home.password' | trans) }}
+					</div>
+					<div class="checkbox mb-3">
+						{{ form_widget(registrationForm.agreeTerms) }}
+						{{ form_label(registrationForm.agreeTerms, 'home.agree' | trans) }}
+					</div>
+					<hr class="my-4">
+					<small class="text-body-secondary">
+
+						{{ 'home.terms' | trans({
+        '%link_start%': '<a href="' ~ path('app_recipe_terms') ~ '">',
+        '%link_end%': '</a>'
+    }) | raw }}
+					</small>
+
+					{{ form_end(registrationForm) }}
+
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

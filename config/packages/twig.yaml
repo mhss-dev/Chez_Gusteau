@@ -1,0 +1,8 @@
+twig:
+    file_name_pattern: '*.twig'
+    form_theme: 'bootstrap_5_layout.html.twig'
+    # exception_controller: 'App\Controller\HomeController::show404'
+
+when@test:
+    twig:
+        strict_variables: true

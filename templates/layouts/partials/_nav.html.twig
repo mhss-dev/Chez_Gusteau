@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('home') }}">Chez Gusteau</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarsExample03">
+			<ul
+				class="navbar-nav ms-auto mb-2 mb-sm-0">
+				<!-- Center-aligned items -->
+				<li class="nav-item">
+					<a class="nav-link {{ app.current_route == 'home' ? 'active' : '' }}" href="{{ path('home') }}">
+						<i class="fas fa-home"></i>
+						{{ 'navbar.home' | trans }}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ app.current_route == 'app_recipe_show' or app.current_route == 'app_recipe_index' ? 'active' : '' }}" href="{{ path('app_recipe_index') }}">
+						<i class="fas fa-utensils"></i>
+						{{ 'navbar.recipes' | trans }}</a>
+				</li>
+                {% if app.user %}
+					{% if app.user.isVerified %}
+						<li class="nav-item">
+							<a class="nav-link {{ app.current_route == 'app_recipe_create' ? 'active' : '' }}" href="{{ path('app_recipe_create') }}">
+								<i class="fas fa-plus-circle"></i>
+								{{ 'navbar.addrecipe' | trans }}</a>
+						</li>
+					{% endif %}
+				{% endif %}
+			</ul>
+			<ul
+				class="navbar-nav ms-auto mb-2 mb-sm-0">
+				{% if app.user %}
+					<li class="nav-item">
+						<a class="nav-link {{ app.current_route == 'app_recipe_profile' ? 'active' : '' }}" href="{{ path('app_recipe_profile') }}">
+							<i class="fa-solid fa-user"></i>
+							{{ app.user.firstname }}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_recipe_logout') }}">
+							<i class="fas fa-sign-out-alt"></i>
+							{{ 'navbar.logout' | trans }}</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-globe"></i>
+							{{ 'navbar.language' | trans }}
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}">
+									<span class="flag-icon flag-icon-gb"></span>
+									EN
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">
+									<span class="flag-icon flag-icon-fr"></span>
+									FR
+								</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+				{% if not app.user %}
+					<li class="nav-item">
+						<a class="nav-link {{ app.current_route == 'app_recipe_login' ? 'active' : '' }}" href="{{ path('app_recipe_login') }}">
+							<i class="fas fa-user"></i>
+							{{ 'navbar.signin' | trans }}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ app.current_route == 'app_recipe_login' ? 'active' : '' }}" href="{{ path('home') }}#inscription">
+							<i class="fas fa-sign-in-alt"></i>
+							{{ 'navbar.signup' | trans }}</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fas fa-globe"></i>
+							{{ 'navbar.language' | trans }}
+						</a>
+						<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item {% if app.request.locale == 'en' %}disabled active{% endif %}" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}">
+									<span class="flag-icon flag-icon-gb"></span>
+									EN
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item {% if app.request.locale == 'fr' %}disabled active{% endif %}" href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}">
+									<span class="flag-icon flag-icon-fr"></span>
+									FR
+								</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>

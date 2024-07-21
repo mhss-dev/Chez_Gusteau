@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Recette {{ recipe.title|title }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="text-center mb-0">{{ 'recipes.modify_title' | trans }}</h1>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'row g-3'}}) }}
+                        <div class="col-md-12">
+                            {{ form_row(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de la recette', 'required': 'required'}}) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_row(form.content, {'attr': {'class': 'form-control', 'rows': 6, 'placeholder': 'Description de la recette', 'required': 'required'}}) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.duration, {'attr': {'class': 'form-control', 'placeholder': 'Durée de préparation (en minutes)', 'required': 'required', 'min': 0}}) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.imageFile, {'attr': {'class': 'form-control', 'placeholder': 'Nom de l\'image', 'required': 'required'}}) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ form_row(form.save, {'attr': {'class': 'btn btn-success w-100'}}) }}
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

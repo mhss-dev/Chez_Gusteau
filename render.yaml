@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: symfony-app
+    env: php
+    plan: free
+    rootDir: .
+    buildCommand: |
+      curl -sS https://getcomposer.org/installer | php
+      php composer.phar install --no-dev --optimize-autoloader
+      php bin/console cache:clear --env=prod
+    startCommand: php -S 0.0.0.0:8000 -t public
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase: chezgusteau_softfriend
+    databases:
+      - name: chezgusteau_softfriend

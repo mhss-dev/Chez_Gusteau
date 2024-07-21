@@ -1,0 +1,143 @@
+
+
+
+recipeForm:
+  header: "Adding new recipe"
+  title: "Title"
+  content: "Description"
+  duration: "Duration of the recipe"
+  imageFile: "Upload image"
+  save: 'Save'
+
+navbar:
+  home: 'Home'
+  recipes: 'Recipes'
+  addrecipe: 'Add Recipe'
+  signin: 'Sign in'
+  signup: "Sign up"
+  language: "Language"
+  account: 'Account'
+  logout: 'Logout'
+
+home:
+  header: "Chez Gusteau is your ultimate source for delicious, easy-to-prepare recipes. Explore a variety of tasty dishes, from appetizers to desserts, with clear instructions and chef tips to enhance your everyday meals. Cook, share and enjoy!"
+  search: "Search for a recipe"
+  review_1: "This recipe site is absolutely fantastic! The instructions are clear and easy to follow, even for a beginner like me. I tried the chicken curry recipe, and it was delicious! The step-by-step photos really helped me get it right the first time. Thank you so much!"
+  review_2: "I'm a big fan of baking and this site is a real gold mine. The recipes for cakes and desserts are incredible. I made the lemon cheesecake last week, and everyone loved it. The proportions and cooking time were perfect. Keep up the good work!"
+  review_3: "The site is well designed and easy to navigate, but I had a few problems with the measurements in some recipes. For example, the pineapple pizza recipe was a little too salty for my taste. Perhaps the quantities of some ingredients could be adjusted."
+  joinus: "Join us!"
+  subtitle: "Register to access over %number% delicious recipes, save your favorites and receive personalized recommendations. Share your creations with a passionate cooking community, and never miss a new recipe. Explore, taste! 
+  
+  Whether you're a seasoned chef or an amateur looking for new ideas, our community is here to inspire you. Everyone can cook!"
+  firstname: "Firstname"
+  lastname: "Lastname"
+  email: "E-mail adress"
+  password: "Password"
+  submit: "Signup"
+  agree: "I agree to the terms and conditions"
+  terms: "By using our site you accept our %link_start%privacy policy%link_end%"
+  welcome: 'Welcome, %firstname%! '
+  verifyemail: 'Please confirm your email!'
+  cheers: 'Cheers!'
+email:
+  confirm_content: 'Please Confirm your Email'
+  confirm_link: 'Confirm my Email'
+  expires_in: 'This link will expire in %expiresAt%.'
+
+account:
+  modify_password: "Modify your current password"
+  avatar: "Upload avatar"
+  delete: "Delete your account"
+  edit: "Edit your account"
+  recipes_title: "Your recipes"
+  recipe_link: "View the recipe"
+  recipenone: "You don't own any recipes"
+  modify_title: "Password modification"
+  modify_current: "Current password"
+  modify_newpassword: "Your new password"
+  modify_again: "Type your new password again"
+  modify_confirm: "Confirm"
+  delete_title: "Deletion of your account"
+  delete_content: "Are you sure you want to delete your account? Data will be deleted right away. This action is irreversible."
+  delete_confirm: "Confirm"
+
+accountEdit:
+  updateProfile: "Updating your profile"
+  applyChanges: "Save your modification"
+userForm:
+  firstname: "Your firstname"
+  lastname: "Your lastname"
+  imageFile: "Upload your avatar"
+
+
+recipes:
+  title: "Recipes List"
+  sort: "Sort"
+  more: "More info"
+  lastupdated: "Last updated"
+  default: "Default"
+  alphabetical: "Alphabetical"
+  duration: "Duration"
+  norecipes: "Sadly... there's not recipes."
+  deleted_successfully: 'Recipe {{ title }} has been successfully deleted.'
+  created_successfully: 'Recipe {{ title }} has been successfully created.'
+  edited_successfully: 'Recipe {{ title }} has been succesfully edited.'
+  last_added_title: 'Discover our last recipes'
+  no_recipes: 'No recipes found'
+
+  preparation: "Duration:"
+  added_by: "Recipe written by: "
+  added_at: "Recipe added: "
+  last_updated: "Last updated: "
+  modify: "Modify"
+  delete: "Delete"
+  confirm_delete: "Are you sure you want to delete this recipe?"
+  back_to_recipes: "Back to recipes"
+  modify_title: "Modify your recipe"
+
+search:
+  notfound: "We tried... but there's nothing with"
+  tryagain: "Try with something else"
+  placeholder: "Search recipe"
+  resultsfound: "Results for your query"
+
+login:
+  title: "Use your identifiants"
+  subtitle: "to join us now"
+  slogan: "Discover more than %number% delicious recipes, shared by cooking enthusiasts from all over the world. Whether you're a seasoned chef or an amateur looking for new ideas, our community is here to inspire you. Explore a variety of dishes from the traditional to the most innovative creations, and make every meal a memorable experience."
+  connection: "Login"
+  log: "Connect"
+  forgot: "Password forget?"
+  notsignup: "Not register yet"
+  alreadyconneced: "You are already connected"
+user:
+    not_verified: 'Your email is not verified yet.'
+    must_confirm_email_edit: 'You must confirm your email to edit a recipe.'
+    must_confirm_email_create: 'You must confirm your email to create a recipe.'
+    must_login_edit: 'You must login to edit recipe!'
+    must_login_create: 'You must login to create a recipe!'
+    current_password_incorrect: 'Current password is incorrect'
+    password_changed_successfully: 'Password changed successfully'
+    cannot_modify_recipe: "You can't modify a recipe that's not yours!"
+    cannot_delete_recipe: "You can't delete a recipe that's not yours!"
+
+password:
+  title: "Password Reset Confirmation"
+  checkmail: "If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password. This link will expire in"
+  notice: "If you don't receive an email, please check your spam folder or try again."
+  resetyourpassword: "Reset Your Password"
+  newpassword: "New password"
+  Repeatpassword: "Repeat password"
+
+footer:
+  home: "Home"
+  recipes: "Recipes List"
+  addrecipe: "Add new recipe"
+  signin: 'Sign in'
+  signup: "Sign up"
+  account: 'Account'
+  logout: "Logout"
+
+error_notfound:
+  content: "Oops! The page you are looking for does not exist."
+  back_to_home: "Back to home"

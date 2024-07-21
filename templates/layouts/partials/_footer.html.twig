@@ -1,0 +1,33 @@
+<footer class="">
+  <div class="container">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item">
+          <a href="{{ path('home') }}" class="nav-link px-2 text-body-secondary {{ app.current_route == 'home' ? 'active' : '' }}">{{ 'footer.home' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('app_recipe_index') }}" class="nav-link px-2 text-body-secondary {{ app.current_route == 'app_recipe_index' ? 'active' : '' }}">{{ 'footer.recipes' | trans }}</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ path('app_recipe_create') }}" class="nav-link px-2 text-body-secondary {{ app.current_route == 'app_recipe_create' ? 'active' : '' }}">{{ 'footer.addrecipe' | trans }}</a>
+        </li>
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 text-body-secondary {{ app.current_route == 'app_recipe_profile' ? 'active' : '' }}" href="{{ path('app_recipe_profile') }}">{{ 'footer.account' | trans }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 text-body-secondary" href="{{ path('app_recipe_logout') }}">{{ 'footer.logout' | trans }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link px-2 text-body-secondary {{ app.current_route == 'app_recipe_login' ? 'active' : '' }}" href="{{ path('app_recipe_login') }}">{{ 'footer.signin' | trans }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 text-body-secondary {{ app.current_route == 'app_recipe_login' ? 'active' : '' }}" href="{{ path('home') }}#inscription">{{ 'footer.signup' | trans }}</a>
+                    </li>
+                {% endif %}
+      </ul>
+      <p class="text-center text-body-secondary">&copy; 2024 Chez Gusteau, Inc</p>
+    </footer>
+  </div>
+</footer>
