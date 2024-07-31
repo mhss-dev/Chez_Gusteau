@@ -1,6 +1,6 @@
 # Chez Gusteau
 
-Bienvenue sur le dépôt de votre site de recettes développé avec Symfony, Bootstrap, et PHP. Ce projet est conçu pour offrir une plateforme conviviale où les utilisateurs peuvent partager et découvrir des recettes de cuisine.
+Bienvenue chez Gusteau site de recettes développé avec Symfony, Bootstrap, et PHP. Ce projet est conçu pour offrir une plateforme conviviale où les utilisateurs peuvent partager et découvrir des recettes de cuisine.
 
 ## Fonctionnalités
 
