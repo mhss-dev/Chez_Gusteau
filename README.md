@@ -12,7 +12,7 @@ Bienvenue chez Gusteau site de recettes développé avec Symfony, Bootstrap, et 
 
 ## Technologies utilisées
 
-- PHP 8 ou supérieur
+- PHP 8
 - Composer
 - Symfony CLI
 - MySQL
