@@ -16,7 +16,3 @@ Bienvenue chez Gusteau site de recettes développé avec Symfony, Bootstrap, et 
 - Composer
 - Symfony CLI
 - MySQL
-
-## Licence
-
-Ce projet est sous licence MIT.
